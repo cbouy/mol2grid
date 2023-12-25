@@ -67,6 +67,7 @@ def driver():
     options.headless = True if GITHUB_ACTIONS else HEADLESS
     driver = FirefoxDriver(options=options)
     driver.set_page_load_timeout(PAGE_LOAD_TIMEOUT)
+    driver.set_window_size(1920, 1080)
     yield driver
     driver.quit()
 
@@ -347,8 +348,8 @@ def test_coordgen(driver: FirefoxDriver, mols, coordGen, prerender, expected):
             False,
             True,
             (
-                "ffffff7fff3fffbff907e02fe13ff80fcbafe33fe033cb07fa4ffa4fff97ffd7"
-                if rdkit_version == "2020.03.1"
+                "ffffff3ffcbffc2fff0ff93ff067e667f46ff5038301c027e487ec9ffa7fffff"
+                if rdkit_version == "2021.03.1"
                 else "ff7ffe1ff91ffd3ff00ff0cffcbff0bff00ffd3fe1bff887f29ff30fff6fff7f"
             ),
             marks=skip_no_coordgen,

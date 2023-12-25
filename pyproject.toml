@@ -1,7 +1,7 @@
 [build-system]
 requires = [
     "hatchling",
-    "jupyterlab==3.*",
+    "jupyterlab==4.*",
 ]
 build-backend = "hatchling.build"
 
@@ -9,7 +9,7 @@ build-backend = "hatchling.build"
 name = "mols2grid"
 description = "Interactive 2D small molecule viewer"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 authors = [
     { name = "Cédric Bouysset", email = "cedric@bouysset.net" },
 ]
@@ -23,21 +23,25 @@ keywords = [
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Framework :: Jupyter",
+    "Framework :: Jupyter :: JupyterLab",
+    "Framework :: Jupyter :: JupyterLab :: Extensions",
+    "Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Chemistry",
 ]
 dependencies = [
-    "ipywidgets>=7,<8",
+    "ipywidgets>=7.6.0,<9",
     "jinja2>=2.11.0",
     "numpy",
-    "pandas",
+    "pandas"
 ]
 dynamic = ["version"]
 
@@ -45,8 +49,14 @@ dynamic = ["version"]
 file = "LICENSE"
 
 [project.optional-dependencies]
+rdkit = [
+    "rdkit",
+]
 build = [
     "build",
+]
+packaging = [
+    "jupyter-packaging~=0.10",
 ]
 tests = [
     "cairosvg==2.5.2",
@@ -62,7 +72,7 @@ docs = [
     "mistune<3.0.0",
 ]
 dev = [
-    "mols2grid[build,tests,docs]",
+    "mols2grid[build,tests,docs,packaging]",
 ]
 
 [project.urls]
